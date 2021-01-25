@@ -13,6 +13,7 @@ import temperatureReducer, {
   setSunrise,
   setSunset,
 } from '../reducers/temperatureReducer';
+import { degreeToDirection } from '../utils';
 
 export function WeatherContainer() {
   const [state, dispatch] = useReducer(temperatureReducer, initialState);
@@ -84,7 +85,7 @@ export function WeatherContainer() {
                   </Weather.StatsInner>
                   <Weather.StatsInner>
                     <Weather.Label>Wind Direction</Weather.Label>
-                    <Weather.Value text>Northeast</Weather.Value>
+                    <Weather.Value text>{degreeToDirection(windDir)}</Weather.Value>
                   </Weather.StatsInner>
 
                   <Weather.StatsInner>
