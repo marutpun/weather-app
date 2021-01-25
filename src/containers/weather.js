@@ -1,6 +1,8 @@
 import 'regenerator-runtime/runtime';
 import React, { useState, useEffect, Fragment, useReducer } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 import Weather from '../components/weather';
 import umbrella from '../images/assorted-color-umbrella.jpg';
@@ -13,7 +15,7 @@ import temperatureReducer, {
   setSunrise,
   setSunset,
 } from '../reducers/temperatureReducer';
-import { degreeToDirection } from '../utils';
+import { degreeToDirection, formatToLocale } from '../utils';
 
 export function WeatherContainer() {
   const [state, dispatch] = useReducer(temperatureReducer, initialState);
@@ -90,12 +92,17 @@ export function WeatherContainer() {
 
                   <Weather.StatsInner>
                     <Weather.Label>Sunrise</Weather.Label>
-                    <Weather.Value text>05:30</Weather.Value>
+                    <Weather.Value text>
+                      <Weather.Icon name="sun" color="red" />
+                      {formatToLocale(sunrise)}
+                    </Weather.Value>
                   </Weather.StatsInner>
-
                   <Weather.StatsInner>
                     <Weather.Label>Sunset</Weather.Label>
-                    <Weather.Value text>18:30</Weather.Value>
+                    <Weather.Value text>
+                      <Weather.Icon name="moon" color="yellow" />
+                      {formatToLocale(sunset)}
+                    </Weather.Value>
                   </Weather.StatsInner>
                 </Weather.StatsGroup>
                 <Weather.Divider />

@@ -19,6 +19,13 @@ export function degreeToDirection(degree) {
     direction = 'North West';
   } else {
     direction = 'N/A';
-  }
+  } 
   return direction;
+}
+
+export function formatToLocale(timestamp) {
+  let date = new Date(timestamp * 1000);
+  const hours = date.getHours();
+  const minutes = '0' + date.getMinutes();
+  return `${hours}:${minutes.substr(-2)}`;
 }
