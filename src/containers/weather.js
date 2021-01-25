@@ -1,8 +1,6 @@
 import 'regenerator-runtime/runtime';
 import React, { useState, useEffect, Fragment, useReducer } from 'react';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 import Weather from '../components/weather';
 import umbrella from '../images/assorted-color-umbrella.jpg';
