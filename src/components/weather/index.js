@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Divider, Statistic, Select } from 'semantic-ui-react';
+import { Container, Divider, Statistic, Select, Icon } from 'semantic-ui-react';
 
 import { Header, Card, ColumnImg, ColumnText, Img, Info, Title } from './styles/weather';
 
@@ -56,6 +56,10 @@ Weather.Label = function WeatherLabel({ children, ...restProps }) {
 };
 Weather.Value = function WeatherValue({ children, ...restProps }) {
   return <Statistic.Value {...restProps}>{children}</Statistic.Value>;
+};
+
+Weather.Icon = function WeatherSun({ ...restProps }) {
+  return <Icon {...restProps} />;
 };
 
 Weather.Select = function WeatherSelect({ ...restProps }) {
