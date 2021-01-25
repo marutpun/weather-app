@@ -7,6 +7,10 @@ export default function Weather({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 }
 
+Weather.Notification = function WeatherNotification({ children, ...restProps }) {
+  return <p {...restProps}>{children}</p>;
+};
+
 Weather.Header = function WeatherHeader({ children, ...restProps }) {
   return <Header {...restProps}>{children}</Header>;
 };
