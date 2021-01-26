@@ -28,10 +28,8 @@ export function WeatherContainer() {
       setIsLoading(true);
 
       try {
-        const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=${process.env.OPENWEATHER_API}&units=metric`
-        );
-
+        const response = await axios.get(`/.netlify/functions/fetch-weather?city=${cityId}`);
+        
         const {
           data: { main, wind, sys },
         } = response;
@@ -51,6 +49,15 @@ export function WeatherContainer() {
 
     fetchWeather();
   }, []);
+
+  /**
+   * const fetchWeatherServerless = async () => {
+   * try {
+   * const response = await axios.get(`/.netlify/functions/fetch-weather?city=${cityId})}
+   * fetch(".netlify/functions/api")
+   *
+   * }
+   */
 
   const { tempMin, tempMax, windDir, windSpeed, sunrise, sunset } = state;
 
