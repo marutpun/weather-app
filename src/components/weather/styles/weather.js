@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Statistic } from 'semantic-ui-react';
 
 export const Header = styled.h1`
   margin: 30px 0 20px;
@@ -22,15 +23,6 @@ export const Card = styled.div`
   display: flex;
   background: hsl(0, 100%, 100%);
   box-shadow: 0 15px 70px hsl(0, 0%, 0%, 0.1);
-`;
-
-export const ColumnImg = styled.figure`
-  margin: 0;
-  width: 50%;
-`;
-
-export const ColumnText = styled.div`
-  width: 50%;
 `;
 
 export const Img = styled.img`
@@ -58,4 +50,15 @@ export const Title = styled.h2`
   text-align: center;
 `;
 
-
+export const StatsInnerStyle = styled(Statistic)`
+  ${(props) =>
+    props.responsive &&
+    css`
+      &&&& {
+        min-width: 100%;
+        @media print, screen and (min-width: 40em) {
+          min-width: 50%;
+        }
+      }
+    `};
+`;
