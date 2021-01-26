@@ -34,6 +34,5 @@ export function formatToLocale(timestamp) {
 }
 
 export function meterToKilometer(velocity) {
-  return velocity * 3.6;
+  return (velocity * 3.6).toFixed(2);
 }
-  
