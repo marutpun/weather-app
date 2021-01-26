@@ -80,28 +80,28 @@ export function WeatherContainer() {
                   </Weather.StatsInner>
                 </Weather.StatsGroup>
                 <Weather.Divider section />
-                <Weather.StatsGroup widths="two">
+                <Weather.StatsGroup widths="two" size="small">
                   <Weather.StatsInner>
                     <Weather.Label>{t('Wind Speed')}</Weather.Label>
-                    <Weather.Value text>
+                    <Weather.Value>
                       {meterToKilometer(windSpeed)} {t('km/h')}
                     </Weather.Value>
                   </Weather.StatsInner>
                   <Weather.StatsInner>
                     <Weather.Label>{t('Wind Direction')}</Weather.Label>
-                    <Weather.Value text>{degreeToDirection(windDir)}</Weather.Value>
+                    <Weather.Value>{degreeToDirection(windDir)}</Weather.Value>
                   </Weather.StatsInner>
 
                   <Weather.StatsInner>
                     <Weather.Label>{t('Sunrise')}</Weather.Label>
-                    <Weather.Value text>
+                    <Weather.Value>
                       <Weather.Icon name="sun" color="red" />
                       {formatToLocale(sunrise)}
                     </Weather.Value>
                   </Weather.StatsInner>
                   <Weather.StatsInner>
                     <Weather.Label>{t('Sunset')}</Weather.Label>
-                    <Weather.Value text>
+                    <Weather.Value>
                       <Weather.Icon name="moon" color="yellow" />
                       {formatToLocale(sunset)}
                     </Weather.Value>

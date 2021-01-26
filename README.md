@@ -1,3 +1,3 @@
 # Weather Forecast
 
-I use parcel, axios, Semantic-UI,
+I use parcel, axios, Semantic-UI, i18next
