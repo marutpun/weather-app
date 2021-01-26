@@ -1,0 +1,20 @@
+{
+  "Weather Forecast": "Prévisions Météo",
+  "Bangkok, Thailand": "Bangkok, Thaïlande",
+  "km/h": "km/h",
+  "Min": "Min",
+  "Max": "Max",
+  "Sunrise": "Le lever du soleil",
+  "Sunset": "Le Coucher de soleil",
+  "Wind Speed": "Vitesse du vent",
+  "Wind Direction": "Direction du vent",
+  "North": "Nord",
+  "North East": "Nord-est",
+  "East": "Est",
+  "South East": "Sud-est",
+  "South": "Sud",
+  "South West": "Sud-ouest",
+  "West": "Ouest",
+  "North West": "Nord-ouest",
+  "N/A": "Indisponible"
+}

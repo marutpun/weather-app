@@ -1,6 +1,7 @@
 import 'regenerator-runtime/runtime';
 import React, { useState, useEffect, Fragment, useReducer } from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 import Weather from '../components/weather';
 import umbrella from '../images/assorted-color-umbrella.jpg';
@@ -19,6 +20,7 @@ export function WeatherContainer() {
   const [state, dispatch] = useReducer(temperatureReducer, initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const { t, i18n } = useTranslation();
   const cityId = 1609350;
 
   useEffect(() => {
@@ -59,44 +61,46 @@ export function WeatherContainer() {
         <Weather.Notification>Loading</Weather.Notification>
       ) : (
         <Fragment>
-          <Weather.Header>Weather App</Weather.Header>
+          <Weather.Header>{t('Weather Forecast')}</Weather.Header>
           <Weather.Card>
             <Weather.ColumnImg>
               <Weather.Img src={umbrella} alt="Umbrella" />
             </Weather.ColumnImg>
             <Weather.ColumnText>
               <Weather.Info>
-                <Weather.Title>Bangkok, Thailand</Weather.Title>
+                <Weather.Title>{t('Bangkok, Thailand')}</Weather.Title>
                 <Weather.StatsGroup widths="two">
                   <Weather.StatsInner>
-                    <Weather.Label>Min</Weather.Label>
+                    <Weather.Label>{t('Min')}</Weather.Label>
                     <Weather.Value>{tempMin}°C</Weather.Value>
                   </Weather.StatsInner>
                   <Weather.StatsInner>
-                    <Weather.Label>Max</Weather.Label>
+                    <Weather.Label>{t('Max')}</Weather.Label>
                     <Weather.Value>{tempMax}°C</Weather.Value>
                   </Weather.StatsInner>
                 </Weather.StatsGroup>
                 <Weather.Divider section />
                 <Weather.StatsGroup widths="two">
                   <Weather.StatsInner>
-                    <Weather.Label>Wind Speed</Weather.Label>
-                    <Weather.Value text>{windSpeed} m/s</Weather.Value>
+                    <Weather.Label>{t('Wind Speed')}</Weather.Label>
+                    <Weather.Value text>
+                      {windSpeed} {t('km/h')}
+                    </Weather.Value>
                   </Weather.StatsInner>
                   <Weather.StatsInner>
-                    <Weather.Label>Wind Direction</Weather.Label>
+                    <Weather.Label>{t('Wind Direction')}</Weather.Label>
                     <Weather.Value text>{degreeToDirection(windDir)}</Weather.Value>
                   </Weather.StatsInner>
 
                   <Weather.StatsInner>
-                    <Weather.Label>Sunrise</Weather.Label>
+                    <Weather.Label>{t('Sunrise')}</Weather.Label>
                     <Weather.Value text>
                       <Weather.Icon name="sun" color="red" />
                       {formatToLocale(sunrise)}
                     </Weather.Value>
                   </Weather.StatsInner>
                   <Weather.StatsInner>
-                    <Weather.Label>Sunset</Weather.Label>
+                    <Weather.Label>{t('Sunset')}</Weather.Label>
                     <Weather.Value text>
                       <Weather.Icon name="moon" color="yellow" />
                       {formatToLocale(sunset)}

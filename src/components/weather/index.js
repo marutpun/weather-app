@@ -1,7 +1,9 @@
 import React from 'react';
 import { Container, Divider, Statistic, Select, Icon } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 import { Header, Card, ColumnImg, ColumnText, Img, Info, Title } from './styles/weather';
+import languageCode from '../../language.json';
 
 export default function Weather({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
@@ -63,10 +65,26 @@ Weather.Icon = function WeatherSun({ ...restProps }) {
 };
 
 Weather.Select = function WeatherSelect({ ...restProps }) {
-  const language = [
-    { key: 'en', value: 'en-us', text: 'English (Default)' },
-    { key: 'th', value: 'th', text: 'ภาษาไทย' },
-    { key: 'fr', value: 'fr', text: 'Français' },
-  ];
-  return <Select placeholder="Choose your language" options={language} {...restProps} />;
+  const { i18n } = useTranslation();
+  
+
+  const _handleChangeLanguage = (event, { value }) => {
+    if (value === 'en') {
+      i18n.changeLanguage('en');
+    } else if (value === 'fr') {
+      i18n.changeLanguage('fr');
+    } else if (value === 'th') {
+      i18n.changeLanguage('th');
+    }
+  };
+
+  return (
+    <Select
+      placeholder="Choose your language"
+      options={languageCode}
+      defaultValue={i18n.language}
+      onChange={_handleChangeLanguage}
+      {...restProps}
+    />
+  );
 };

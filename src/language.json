@@ -1,0 +1,16 @@
+[
+  { "key": "en",
+    "value": "en",
+    "text":"English (Default)"
+  },
+  {
+    "key": "th",
+    "value": "th",
+    "text": "ภาษาไทย"
+  },
+  {
+    "key": "fr",
+    "value": "fr",
+    "text": "Français"
+  }
+]
