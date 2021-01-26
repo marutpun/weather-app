@@ -14,7 +14,7 @@ import temperatureReducer, {
   setSunrise,
   setSunset,
 } from '../reducers/temperatureReducer';
-import { degreeToDirection, formatToLocale } from '../utils';
+import { degreeToDirection, formatToLocale, meterToKilometer } from '../utils';
 
 export function WeatherContainer() {
   const [state, dispatch] = useReducer(temperatureReducer, initialState);
@@ -84,7 +84,7 @@ export function WeatherContainer() {
                   <Weather.StatsInner>
                     <Weather.Label>{t('Wind Speed')}</Weather.Label>
                     <Weather.Value text>
-                      {windSpeed} {t('km/h')}
+                      {meterToKilometer(windSpeed)} {t('km/h')}
                     </Weather.Value>
                   </Weather.StatsInner>
                   <Weather.StatsInner>
