@@ -1,8 +1,8 @@
 import React from 'react';
-import { Container, Divider, Statistic, Select, Icon } from 'semantic-ui-react';
+import { Container, Grid, Divider, Statistic, Select, Icon } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { Header, Card, ColumnImg, ColumnText, Img, Info, Title } from './styles/weather';
+import { Header, Card, Img, Info, Title, StatsInnerStyle } from './styles/weather';
 import languageCode from '../../language.json';
 
 export default function Weather({ children, ...restProps }) {
@@ -21,12 +21,12 @@ Weather.Card = function WeatherCard({ children, ...restProps }) {
   return <Card {...restProps}>{children}</Card>;
 };
 
-Weather.ColumnImg = function WeatherColumnImg({ children, ...restProps }) {
-  return <ColumnImg {...restProps}>{children}</ColumnImg>;
+Weather.CardContainer = function WeatherCardContainer({ children, ...restProps }) {
+  return <Grid {...restProps}>{children}</Grid>;
 };
 
-Weather.ColumnText = function WeatherColumnText({ children, ...restProps }) {
-  return <ColumnText {...restProps}>{children}</ColumnText>;
+Weather.Column = function WeatherColumn({ children, ...restProps }) {
+  return <Grid.Column {...restProps}>{children}</Grid.Column>;
 };
 
 Weather.Img = function WeatherImg({ src, alt, ...restProps }) {
@@ -50,7 +50,7 @@ Weather.StatsGroup = function WeatherStatsGroup({ children, ...restProps }) {
 };
 
 Weather.StatsInner = function WeatherStatsInner({ children, ...restProps }) {
-  return <Statistic {...restProps}>{children}</Statistic>;
+  return <StatsInnerStyle {...restProps}>{children}</StatsInnerStyle>;
 };
 
 Weather.Label = function WeatherLabel({ children, ...restProps }) {
@@ -66,7 +66,6 @@ Weather.Icon = function WeatherSun({ ...restProps }) {
 
 Weather.Select = function WeatherSelect({ ...restProps }) {
   const { i18n } = useTranslation();
-  
 
   const _handleChangeLanguage = (event, { value }) => {
     if (value === 'en') {
