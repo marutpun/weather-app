@@ -32,3 +32,8 @@ export function formatToLocale(timestamp) {
   const minutes = '0' + date.getMinutes();
   return `${hours}:${minutes.substr(-2)}`;
 }
+
+export function meterToKilometer(velocity) {
+  return velocity * 3.6;
+}
+  
