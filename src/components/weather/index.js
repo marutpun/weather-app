@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid, Divider, Statistic, Select, Icon } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { Header, Card, Img, Info, Title, StatsInnerStyle } from './styles/weather';
+import { Header, Card, Img, Info, Title, StatsInnerStyle, SelectContainer } from './styles/weather';
 import languageCode from '../../language.json';
 
 export default function Weather({ children, ...restProps }) {
@@ -78,12 +78,14 @@ Weather.Select = function WeatherSelect({ ...restProps }) {
   };
 
   return (
-    <Select
-      placeholder="Choose your language"
-      options={languageCode}
-      defaultValue={i18n.language}
-      onChange={_handleChangeLanguage}
-      {...restProps}
-    />
+    <SelectContainer>
+      <Select
+        placeholder="Choose your language"
+        options={languageCode}
+        defaultValue={i18n.language}
+        onChange={_handleChangeLanguage}
+        {...restProps}
+      />
+    </SelectContainer>
   );
 };
