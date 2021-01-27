@@ -1,54 +1,16 @@
 import 'regenerator-runtime/runtime';
 import React, { useState, useEffect, Fragment, useReducer } from 'react';
-import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 
 import Weather from '../components/weather';
 import umbrella from '../images/assorted-color-umbrella.jpg';
-import temperatureReducer, {
-  initialState,
-  setTempMin,
-  setTempMax,
-  setWindDir,
-  setWindSpeed,
-  setSunrise,
-  setSunset,
-} from '../reducers/temperatureReducer';
+import { setTempMin, setTempMax, setWindDir, setWindSpeed, setSunrise, setSunset } from '../reducers/temperatureReducer';
+import useWeather from '../customHooks/useWeather';
 import { degreeToDirection, formatToLocale, meterToKilometer } from '../utils';
 
 export function WeatherContainer() {
-  const [state, dispatch] = useReducer(temperatureReducer, initialState);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
   const { t, i18n } = useTranslation();
-  const cityId = 1609350;
-
-  useEffect(() => {
-    const fetchWeather = async () => {
-      setIsLoading(true);
-
-      try {
-        const response = await axios.get(`/.netlify/functions/fetch-weather?city=${cityId}`);
-
-        const {
-          data: { main, wind, sys },
-        } = response;
-
-        dispatch(setTempMin(main.temp_min));
-        dispatch(setTempMax(main.temp_max));
-        dispatch(setWindDir(wind.deg));
-        dispatch(setWindSpeed(wind.speed));
-        dispatch(setSunrise(sys.sunrise));
-        dispatch(setSunset(sys.sunset));
-
-        setIsLoading(false);
-      } catch (error) {
-        setIsError(true);
-      }
-    };
-
-    fetchWeather();
-  }, []);
+  const { state, isLoading, isError } = useWeather(false);
 
   const { tempMin, tempMax, windDir, windSpeed, sunrise, sunset } = state;
 
@@ -69,35 +31,35 @@ export function WeatherContainer() {
                 <Weather.Info>
                   <Weather.Title>{t('Bangkok, Thailand')}</Weather.Title>
                   <Weather.StatsGroup widths="one">
-                    <Weather.StatsInner responsive>
+                    <Weather.StatsInner responsive="true">
                       <Weather.Label>{t('Min')}</Weather.Label>
                       <Weather.Value>{tempMin}°C</Weather.Value>
                     </Weather.StatsInner>
-                    <Weather.StatsInner responsive>
+                    <Weather.StatsInner responsive="true">
                       <Weather.Label>{t('Max')}</Weather.Label>
                       <Weather.Value>{tempMax}°C</Weather.Value>
                     </Weather.StatsInner>
                   </Weather.StatsGroup>
                   <Weather.Divider section />
                   <Weather.StatsGroup widths="one" size="small">
-                    <Weather.StatsInner responsive>
+                    <Weather.StatsInner responsive="true">
                       <Weather.Label>{t('Wind Speed')}</Weather.Label>
                       <Weather.Value>
                         {meterToKilometer(windSpeed)} {t('km/h')}
                       </Weather.Value>
                     </Weather.StatsInner>
-                    <Weather.StatsInner responsive>
+                    <Weather.StatsInner responsive="true">
                       <Weather.Label>{t('Wind Direction')}</Weather.Label>
                       <Weather.Value>{degreeToDirection(windDir)}</Weather.Value>
                     </Weather.StatsInner>
-                    <Weather.StatsInner responsive>
+                    <Weather.StatsInner responsive="true">
                       <Weather.Label>{t('Sunrise')}</Weather.Label>
                       <Weather.Value>
                         <Weather.Icon name="sun" color="red" />
                         {formatToLocale(sunrise)}
                       </Weather.Value>
                     </Weather.StatsInner>
-                    <Weather.StatsInner responsive>
+                    <Weather.StatsInner responsive="true">
                       <Weather.Label>{t('Sunset')}</Weather.Label>
                       <Weather.Value>
                         <Weather.Icon name="moon" color="yellow" />
