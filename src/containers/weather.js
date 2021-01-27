@@ -24,10 +24,10 @@ export function WeatherContainer() {
           <Weather.Header>{t('Weather Forecast')}</Weather.Header>
           <Weather.Card>
             <Weather.CardContainer>
-              <Weather.Column mobile={16} computer={8}>
+              <Weather.Column mobile={16} computer={7}>
                 <Weather.Img src={umbrella} alt="Umbrella" />
               </Weather.Column>
-              <Weather.Column mobile={16} computer={8}>
+              <Weather.Column mobile={16} computer={9}>
                 <Weather.Info>
                   <Weather.Title>{t('Bangkok, Thailand')}</Weather.Title>
                   <Weather.StatsGroup widths="one">
